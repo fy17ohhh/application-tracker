@@ -36,7 +36,7 @@ import {
 import { downloadFile } from "../../src/lib/download";
 import "./style.css";
 
-const applicationStatuses = ["applied", "interview", "offer", "rejected"] as const;
+const applicationStatuses = ["apply", "applied", "interview", "offer", "rejected"] as const;
 type ExportKind = "csv" | "xlsx" | "template" | "backup";
 type EditableTextField =
   "organization" | "title" | "location" | "deadline" | "sourceUrl" | "tags" | "notes";
@@ -85,6 +85,7 @@ function Dashboard() {
   const stale = staleApplications(filtered);
 
   function statusLabel(value: string) {
+    if (value === "apply") return t("apply");
     if (value === "applied") return t("applied");
     if (value === "interview") return t("interview");
     if (value === "offer") return t("offer");
@@ -226,12 +227,15 @@ function Dashboard() {
         type={field === "deadline" ? "date" : "text"}
         value={editingValue}
         onChange={(event) => setEditingValue(event.target.value)}
+        onBlur={() => void saveEditing(application, field)}
         onKeyDown={(event) => {
           if (event.key === "Enter") {
             event.preventDefault();
             void saveEditing(application, field);
           }
-          if (event.key === "Escape") setEditingCell(null);
+          if (event.key === "Escape") {
+            setEditingCell(null);
+          }
         }}
       />
     );
@@ -275,9 +279,7 @@ function Dashboard() {
     <main className="dashboard">
       <header className="topbar">
         <div>
-          <h1>
-            {t("appName")} {t("dashboard")}
-          </h1>
+          <h1>{t("dashboard")}</h1>
         </div>
         <Button onClick={() => void reload()} variant="secondary">
           <RefreshCw size={16} /> {t("refreshed")}
@@ -309,7 +311,7 @@ function Dashboard() {
           <ResponsiveContainer width="100%" height={220}>
             <BarChart data={metrics.statusFunnel}>
               <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="key" />
+              <XAxis dataKey="status" tickFormatter={(value) => statusLabel(String(value))} />
               <YAxis allowDecimals={false} />
               <Tooltip />
               <Bar dataKey="count" fill="#1c5f7a" />

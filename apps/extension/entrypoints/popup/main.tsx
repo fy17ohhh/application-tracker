@@ -42,7 +42,7 @@ function Popup() {
       type: "job",
       organization: "",
       title: "",
-      status: "applied",
+      status: "apply",
       sourceUrl: "",
       sourceDomain: "",
       tags: [],
@@ -93,19 +93,12 @@ function Popup() {
     setState("saving");
     setMessage("");
     try {
-      const {
-        tagsText,
-        status: _status,
-        contact: _contact,
-        nextActionAt: _nextActionAt,
-        ...draftValues
-      } = values;
-      void _status;
+      const { tagsText, contact: _contact, nextActionAt: _nextActionAt, ...draftValues } = values;
       void _contact;
       void _nextActionAt;
       const draft: ApplicationDraft = {
         ...draftValues,
-        status: "applied",
+        status: values.status ?? "apply",
         tags: (tagsText ?? "")
           .split(/[;,]/)
           .map((tag) => tag.trim())

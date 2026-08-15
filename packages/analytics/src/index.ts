@@ -21,7 +21,15 @@ export interface DashboardMetrics {
   byTag: Array<{ key: string; count: number }>;
 }
 
-const terminalStatuses = new Set(["rejected", "withdrawn", "offer", "accepted", "录取", "拒绝", "已撤回"]);
+const terminalStatuses = new Set([
+  "rejected",
+  "withdrawn",
+  "offer",
+  "accepted",
+  "录取",
+  "拒绝",
+  "已撤回"
+]);
 const interviewStatuses = new Set(["interview", "interviewing", "面试"]);
 const offerStatuses = new Set(["offer", "accepted", "录取"]);
 
@@ -31,7 +39,9 @@ export function computeDashboardMetrics(
   filter: AnalyticsFilter = {}
 ): DashboardMetrics {
   const now = filter.now ?? new Date();
-  const scoped = filter.type ? applications.filter((item) => item.type === filter.type) : applications;
+  const scoped = filter.type
+    ? applications.filter((item) => item.type === filter.type)
+    : applications;
   const scopedIds = new Set(scoped.map((item) => item.id));
   const scopedEvents = events.filter((event) => scopedIds.has(event.applicationId));
   const weekStart = startOfWeek(now);
@@ -43,12 +53,16 @@ export function computeDashboardMetrics(
   return {
     total: scoped.length,
     addedThisWeek: createdEvents.filter((event) => new Date(event.occurredAt) >= weekStart).length,
-    addedThisMonth: createdEvents.filter((event) => new Date(event.occurredAt) >= monthStart).length,
+    addedThisMonth: createdEvents.filter((event) => new Date(event.occurredAt) >= monthStart)
+      .length,
     active: scoped.filter((item) => !terminalStatuses.has(item.status.toLowerCase())).length,
     interviewRate: rate(interviewIds.size, scoped.length),
     offerRate: rate(offerIds.size, scoped.length),
     averageResponseDays: averageResponseDays(scoped, scopedEvents),
-    statusFunnel: countBy(scoped.map((item) => item.status)).map(({ key, count }) => ({ status: key, count })),
+    statusFunnel: countBy(scoped.map((item) => item.status)).map(({ key, count }) => ({
+      status: key,
+      count
+    })),
     trend: trendByWeek(createdEvents),
     byOrganization: countBy(scoped.map((item) => item.organization)),
     bySourceDomain: countBy(scoped.map((item) => item.sourceDomain)),
@@ -58,35 +72,51 @@ export function computeDashboardMetrics(
 }
 
 export function dueTodayOrThisWeek(applications: Application[], now = new Date()): Application[] {
-  const end = new Date(now);
-  end.setDate(end.getDate() + 7);
+  const weekStart = startOfWeek(now);
+  const weekEnd = endOfWeek(now);
+
   return applications.filter((item) => {
     const next = item.nextActionAt ?? item.deadline;
     if (!next) return false;
     const date = new Date(next);
-    return date >= startOfDay(now) && date <= end;
+    return date >= weekStart && date <= weekEnd;
   });
 }
 
-export function staleApplications(applications: Application[], now = new Date(), days = 21): Application[] {
+export function staleApplications(
+  applications: Application[],
+  now = new Date(),
+  days = 21
+): Application[] {
   const threshold = new Date(now);
   threshold.setDate(threshold.getDate() - days);
   return applications.filter(
-    (item) => !terminalStatuses.has(item.status.toLowerCase()) && new Date(item.updatedAt) < threshold
+    (item) =>
+      !terminalStatuses.has(item.status.toLowerCase()) && new Date(item.updatedAt) < threshold
   );
 }
 
 function idsWithStatus(events: ApplicationEvent[], statuses: Set<string>): Set<string> {
   return new Set(
     events
-      .filter((event) => event.type === "status_changed" && event.toStatus && statuses.has(event.toStatus.toLowerCase()))
+      .filter(
+        (event) =>
+          event.type === "status_changed" &&
+          event.toStatus &&
+          statuses.has(event.toStatus.toLowerCase())
+      )
       .map((event) => event.applicationId)
   );
 }
 
-function averageResponseDays(applications: Application[], events: ApplicationEvent[]): number | null {
+function averageResponseDays(
+  applications: Application[],
+  events: ApplicationEvent[]
+): number | null {
   const createdAt = new Map(applications.map((item) => [item.id, new Date(item.createdAt)]));
-  const responseEvents = events.filter((event) => event.type === "status_changed" && event.toStatus !== "saved");
+  const responseEvents = events.filter(
+    (event) => event.type === "status_changed" && event.toStatus !== "saved"
+  );
   const firstByApp = new Map<string, Date>();
   for (const event of responseEvents) {
     const current = firstByApp.get(event.applicationId);
@@ -114,7 +144,9 @@ function countBy(values: string[]): Array<{ key: string; count: number }> {
 }
 
 function trendByWeek(events: ApplicationEvent[]): Array<{ period: string; count: number }> {
-  return countBy(events.map((event) => weekKey(new Date(event.occurredAt)))).map(({ key, count }) => ({ period: key, count }));
+  return countBy(events.map((event) => weekKey(new Date(event.occurredAt)))).map(
+    ({ key, count }) => ({ period: key, count })
+  );
 }
 
 function rate(part: number, total: number): number {
@@ -134,5 +166,16 @@ function startOfDay(date: Date): Date {
 
 function weekKey(date: Date): string {
   const start = startOfWeek(date);
-  return start.toISOString().slice(0, 10);
+  return [
+    start.getFullYear(),
+    String(start.getMonth() + 1).padStart(2, "0"),
+    String(start.getDate()).padStart(2, "0")
+  ].join("-");
+}
+
+function endOfWeek(date: Date): Date {
+  const result = startOfWeek(date);
+  result.setDate(result.getDate() + 6);
+  result.setHours(23, 59, 59, 999);
+  return result;
 }

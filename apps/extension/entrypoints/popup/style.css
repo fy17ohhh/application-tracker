@@ -1,29 +1,53 @@
 @import "../../src/styles.css";
 
 html {
-  height: 600px;
-  max-height: 600px;
+  height: 760px;
+  max-height: 760px;
   overflow: hidden;
   width: 520px;
   min-width: 520px;
 }
 
 body {
-  height: 600px;
-  max-height: 600px;
-  overflow-x: hidden;
-  overflow-y: auto;
+  height: 760px;
+  max-height: 760px;
+  overflow: hidden;
   width: 520px;
   max-width: 520px;
 }
 
+#root {
+  height: 100%;
+}
+
 .popup-shell {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 16px;
+  height: 100%;
   min-height: 100%;
-  padding: 20px;
+  padding: 20px 20px 28px;
   width: 520px;
   max-width: 520px;
+  box-sizing: border-box;
+}
+
+.popup-shell form {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.popup-shell .form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 11px;
+  min-height: 0;
+}
+
+.popup-shell > form > button,
+.popup-shell > form .button {
+  margin-top: 12px;
 }
 
 .popup-shell > header {
