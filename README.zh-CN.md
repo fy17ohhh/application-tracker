@@ -64,17 +64,13 @@ corepack pnpm --filter @application-tracker/extension build:edge # microsoft edg
   <img src="img/entries.png" alt="entries" width="400" />
 </p>
 
-## 贡献
-
-本地开发、测试和贡献流程请参见 [CONTRIBUTING.md](CONTRIBUTING.md)。
-
 ## 隐私说明
 
 ApplyBoard 会将申请记录保存在浏览器本地的 IndexedDB 中。扩展仅在用户明确执行操作后才读取当前页面。默认不会向远程服务发送申请数据，导出功能也供用户自行备份和管理。
 
 ## 参与贡献
 
-欢迎贡献代码、反馈和改进建议。请先阅读 [CONTRIBUTING.md](CONTRIBUTING.md)，再提交 issue 或 pull request。
+欢迎贡献代码、反馈和改进建议。请先阅读 [CONTRIBUTING.md](CONTRIBUTING.md)。
 
 ## 许可证
 
