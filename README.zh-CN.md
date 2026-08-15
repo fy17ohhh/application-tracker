@@ -1,9 +1,9 @@
 # ApplyBoard
 
-一个轻量化浏览器扩展，用于从访问的页面中追踪职位、学校和奖学金申请。
+一个轻量化浏览器扩展，用于从访问的页面中追踪职位和学校申请。
 
 <p align="center">
-  <img src="img/dashboard.png" alt="ApplyBoard dashboard" width="900" />
+  <img src="img/dashboard.png" alt="Dashboard" width="66%" />
 </p>
 
 [English](README.md) | [简体中文](README.zh-CN.md)
@@ -56,6 +56,13 @@ corepack pnpm --filter @application-tracker/extension build:edge # microsoft edg
 3. 点击 **加载已解压的扩展程序**（Load unpacked）。
 4. 选择以下目录：`apps/extension/output/<browser>-mv3`
 5. 加载整个文件夹。
+
+## 示例用法
+
+<p align="center">
+  <img src="img/usage.png" alt="usage-example" width="400" />
+  <img src="img/entries.png" alt="entries" width="400" />
+</p>
 
 ## 贡献
 

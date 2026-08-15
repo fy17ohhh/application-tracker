@@ -1,9 +1,9 @@
 # ApplyBoard
 
-A lightweight browser extension for tracking job, school, and scholarship applications from the pages you visit.
+A lightweight browser extension for tracking job and degree applications from the pages you visit.
 
 <p align="center">
-  <img src="img/dashboard.png" alt="ApplyBoard dashboard" width="900" />
+  <img src="img/dashboard.png" alt="Dashboard" width="66%" />
 </p>
 
 [English](README.md) | [简体中文](README.zh-CN.md)
@@ -62,6 +62,13 @@ This command generates the extension bundle for the configured browser target.
 5. Load the entire folder.
 
 For local development setup, testing, and contribution workflow, see [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Example Usage
+
+<p align="center">
+  <img src="img/usage.png" alt="usage-example" width="400" />
+  <img src="img/entries.png" alt="entries" width="400" />
+</p>
 
 ## Privacy
 
