@@ -1,0 +1,201 @@
+:root {
+  color-scheme: light;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
+  color: #17221d;
+  background: #f3f7f3;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 0;
+  background: #f3f7f3;
+  color: #17221d;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  -webkit-font-smoothing: antialiased;
+}
+
+.button {
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  display: inline-flex;
+  font-weight: 650;
+  gap: 8px;
+  justify-content: center;
+  min-height: 40px;
+  padding: 9px 14px;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+.button-primary {
+  background: #145c46;
+  box-shadow: 0 5px 14px rgba(20, 92, 70, 0.16);
+  color: #ffffff;
+}
+
+.button-primary:hover {
+  background: #0e4d3b;
+}
+
+.button-secondary {
+  background: #ffffff;
+  border-color: #d5e1d8;
+  color: #244238;
+}
+
+.button-secondary:hover {
+  background: #eef5ef;
+  border-color: #b7cdbd;
+}
+
+.button-danger {
+  background: #b33b32;
+  color: #ffffff;
+}
+
+.button-danger:hover {
+  background: #963129;
+}
+
+.button:disabled {
+  cursor: progress;
+  opacity: 0.7;
+  transform: none;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: 0.01em;
+}
+
+input,
+select,
+textarea {
+  background: #ffffff;
+  border: 1px solid #ccdacf;
+  border-radius: 9px;
+  color: #17221d;
+  min-height: 38px;
+  padding: 8px 10px;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #91a198;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input:hover,
+select:hover,
+textarea:hover {
+  border-color: #a9c2b0;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus-visible {
+  border-color: #2f8769;
+  box-shadow: 0 0 0 3px rgba(47, 135, 105, 0.18);
+  outline: none;
+}
+
+.link-button {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  color: #145c46;
+  cursor: pointer;
+  display: inline-flex;
+  font-weight: 650;
+  gap: 6px;
+  justify-self: start;
+  padding: 4px 0;
+}
+
+.link-button:hover {
+  color: #0e4d3b;
+}
+
+.notice {
+  background: #edf7ef;
+  border: 1px solid #bad7c1;
+  border-radius: 10px;
+  color: #216342;
+  padding: 11px 13px;
+}
+
+.notice.error {
+  background: #fff2f0;
+  border-color: #efbbb5;
+  color: #98382e;
+}
+
+.warning {
+  align-items: flex-start;
+  background: #fff9e9;
+  border: 1px solid #ecd79a;
+  border-radius: 10px;
+  color: #6c5318;
+  display: flex;
+  gap: 9px;
+  padding: 11px 13px;
+}
+
+.warning ul {
+  margin: 0;
+  padding-left: 16px;
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

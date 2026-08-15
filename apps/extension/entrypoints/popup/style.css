@@ -1,0 +1,103 @@
+@import "../../src/styles.css";
+
+html {
+  height: 600px;
+  max-height: 600px;
+  overflow: hidden;
+  width: 520px;
+  min-width: 520px;
+}
+
+body {
+  height: 600px;
+  max-height: 600px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 520px;
+  max-width: 520px;
+}
+
+.popup-shell {
+  display: grid;
+  gap: 16px;
+  min-height: 100%;
+  padding: 20px;
+  width: 520px;
+  max-width: 520px;
+}
+
+.popup-shell > header {
+  align-items: flex-start;
+  display: flex;
+  justify-content: space-between;
+}
+
+.popup-shell h1 {
+  color: #123f31;
+  font-size: 19px;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.popup-shell header p {
+  color: #718078;
+  font-size: 12px;
+  margin: 5px 0 0;
+}
+
+.button-row {
+  display: grid;
+  gap: 9px;
+  grid-template-columns: minmax(0, 1fr) 160px;
+  min-width: 0;
+  width: 100%;
+}
+
+.button-row > .button {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  width: 100%;
+}
+
+.button-row .button-secondary {
+  min-width: 0;
+}
+
+.form-grid {
+  display: grid;
+  gap: 11px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.form-grid .field:nth-child(5),
+.form-grid .field:nth-child(7),
+.form-grid .field:nth-child(8),
+.form-grid > button {
+  grid-column: 1 / -1;
+}
+
+.form-grid > button {
+  margin-top: 3px;
+  width: 100%;
+}
+
+.popup-shell .warning,
+.popup-shell .notice {
+  font-size: 13px;
+}
+
+@media (max-width: 440px) {
+  .popup-shell {
+    padding: 16px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-grid .field,
+  .form-grid > button {
+    grid-column: auto;
+  }
+}

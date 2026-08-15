@@ -1,0 +1,19 @@
+{
+  "files": [],
+  "references": [
+    { "path": "packages/core" },
+    { "path": "packages/extractors" },
+    { "path": "packages/analytics" },
+    { "path": "packages/integrations" },
+    { "path": "packages/ui" },
+    { "path": "apps/api" },
+    { "path": "apps/extension" }
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
+  }
+}

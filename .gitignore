@@ -1,45 +1,31 @@
 # dependencies
-node_modules/
-.pnpm-store/
+node_modules
+.pnpm-store
 .pnpm-debug.log*
 
-# build artifacts / generated output
-.output/
-.wxt/
-output/
-dist/
-coverage/
-playwright-report/
-test-results/
-*.zip
+# build output
+dist
+apps/extension/output
+apps/extension/.output
+apps/extension/.wxt
+coverage
+playwright-report
+test-results
 
-# local environment and secrets
+# environment / secrets
 .env
 .env.*
 !.env.example
-*.pem
-*.key
-*.crt
-*.sqlite
-*.db
-*.local
 
-# editors and OS files
-.vscode/
-.idea/
+# editor / OS
 .DS_Store
 Thumbs.db
 
 # logs
 *.log
 npm-debug.log*
-yarn-debug.log*
 pnpm-debug.log*
+yarn-debug.log*
 
 # local app data
-apps/**/.data/
-apps/**/.output/
-apps/**/.wxt/
-apps/**/output/
-apps/**/test-results/
-apps/**/playwright-report/
+apps/api/.data

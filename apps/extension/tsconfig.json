@@ -1,0 +1,25 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "composite": true,
+    "jsx": "react-jsx",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM"],
+    "types": ["wxt/client", "webextension-polyfill"],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "noEmit": true
+  },
+  "references": [
+    { "path": "../../packages/core" },
+    { "path": "../../packages/extractors" },
+    { "path": "../../packages/analytics" },
+    { "path": "../../packages/integrations" },
+    { "path": "../../packages/ui" }
+  ],
+  "include": ["entrypoints", "src", "wxt.config.ts"]
+}

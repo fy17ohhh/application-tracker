@@ -1,0 +1,35 @@
+{
+  "name": "@application-tracker/extension",
+  "version": "0.1.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "icons": "node scripts/generate-icons.mjs",
+    "dev": "node scripts/generate-icons.mjs && wxt",
+    "dev:edge": "node scripts/generate-icons.mjs && wxt -b edge",
+    "build": "node scripts/generate-icons.mjs && wxt build",
+    "build:edge": "node scripts/generate-icons.mjs && wxt build -b edge",
+    "zip": "node scripts/generate-icons.mjs && wxt zip",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@application-tracker/analytics": "workspace:*",
+    "@application-tracker/core": "workspace:*",
+    "@application-tracker/extractors": "workspace:*",
+    "@application-tracker/integrations": "workspace:*",
+    "@application-tracker/ui": "workspace:*",
+    "@hookform/resolvers": "^3.9.0",
+    "lucide-react": "^0.441.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-hook-form": "^7.53.0",
+    "recharts": "^2.12.7",
+    "webextension-polyfill": "^0.12.0",
+    "wxt": "^0.19.9",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/webextension-polyfill": "^0.12.1",
+    "typescript": "^5.6.2"
+  }
+}
