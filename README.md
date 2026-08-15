@@ -16,7 +16,7 @@ Built with Manifest V3 (MV3) and a TypeScript monorepo, the project keeps data l
 
 ## Features
 
-- Track status, deadlines, notes, tags, and custom metadata; edit entries in-line within bashboard
+- Track status, deadlines, notes, tags, and custom metadata; include a default To apply state and edit entries in-line within the dashboard
 - Store records locally in IndexedDB, enable fast update and one-click delete
 - Import and export backup files in CSV, XLSX, and JSON formats
 - Support Chrome and Edge extension builds
@@ -66,10 +66,9 @@ For local development setup, testing, and contribution workflow, see [CONTRIBUTI
 ## Example Usage
 
 <p align="center">
-  <img src="img/usage.png" alt="usage-example" width="400" />
-  <img src="img/entries.png" alt="entries" width="400" />
+  <img src="img/usage.png" alt="usage-example" width="70%" />
+  <img src="img/entries.png" alt="entries" width="70%" />
 </p>
-
 ## Privacy
 
 ApplyBoard stores application records locally in the browser's IndexedDB. The extension reads the active page only after an explicit user action. It does not send application data to a remote service by default, and exports are designed for user-controlled backups.

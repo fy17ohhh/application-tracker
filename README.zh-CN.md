@@ -16,7 +16,7 @@ ApplyBoard 帮助你在浏览器中高效管理申请流程：在目标页面中
 
 ## 功能特点
 
-- 跟踪状态、截止日期、备注、标签和自定义字段，看板中可快速行内编辑
+- 跟踪状态、截止日期、备注、标签和自定义字段，并提供“待申请”默认状态，面板中可快速行内编辑
 - 将记录保存在浏览器的 IndexedDB 中，快速更新信息，一键删除
 - 支持 CSV、XLSX 和 JSON 格式的备份导入/导出
 - 支持 Chrome 和 Edge 扩展构建
@@ -60,8 +60,8 @@ corepack pnpm --filter @application-tracker/extension build:edge # microsoft edg
 ## 示例用法
 
 <p align="center">
-  <img src="img/usage.png" alt="usage-example" width="400" />
-  <img src="img/entries.png" alt="entries" width="400" />
+  <img src="img/usage.png" alt="usage-example" width="70%" />
+  <img src="img/entries.png" alt="entries" width="70%" />
 </p>
 
 ## 隐私说明
