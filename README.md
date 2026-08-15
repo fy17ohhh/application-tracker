@@ -69,6 +69,7 @@ For local development setup, testing, and contribution workflow, see [CONTRIBUTI
   <img src="img/usage.png" alt="usage-example" width="70%" />
   <img src="img/entries.png" alt="entries" width="70%" />
 </p>
+
 ## Privacy
 
 ApplyBoard stores application records locally in the browser's IndexedDB. The extension reads the active page only after an explicit user action. It does not send application data to a remote service by default, and exports are designed for user-controlled backups.
